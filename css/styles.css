@@ -1,0 +1,70 @@
+:root{
+    --primary1: #FDE5EC;
+    --primary2: #FCBAAD;
+    --secondary1: #E48586   ;
+    --secondary2: #916DB3;
+
+}
+
+*{
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(to top,#fde5ec81, #fcbaad7d),url(https://github.com/suengit6/CozyChic-Images-Final/blob/main/BG-image/rosegold-roses.jpg?raw=true)no-repeat top center;
+}
+.container{
+    margin-top:20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    max-width: 100%;
+}
+.container img{ 
+    max-height: 400px;
+    height: 400px;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    margin: 0;
+}
+
+.container-2{
+    text-align: center;
+    background-color: var(--primary2);
+    padding: 50px 0px;
+}
+.container-2 h1{
+    color: #354424;
+    font-weight: 600;
+}
+.collab-images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.collab-images img{
+    height: 60px;
+    width: 60px;
+    margin: 10px 11%;
+}
+.container-3{
+    display: flex;
+    margin: auto 32px;
+}
+.feature-products{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: #354424 2px solid;
+}
+.feature-products img{
+    height: 100px;
+    width: 50px;
+    object-fit: cover;
+    padding-right: 10px 11%;
+}
