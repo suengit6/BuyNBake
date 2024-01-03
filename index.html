@@ -3,170 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CozyChic</title>
+    <title>BuyNBakeRecipes</title>
 
-    <!--BOOTSTRAP CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- links -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
 
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <!-- FONTAWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/footer.css">
 
-    <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Logo/CozyChicLogo.png?raw=true">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css\styles.css">
-    <link rel="stylesheet" href="css\nav.css">
-    <link rel="stylesheet" href="css\footer.css">
-
-    
 </head>
 <body>
-    
-    <!-- NAVBAR -->
-    <section>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark primary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/index.html">
-                        <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Logo/CozyChicLogo.png?raw=true" alt="logo" width="50px" height="50px" class="d-inline-block align-text-top">
-                        <h1 class="secondary-text d-inline-block align-text-top">CozyChic</h1>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <form class="d-flex form-main">
-                                <input class="form-control form-control-2 me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-color" type="submit">Search</button>
-                            </form>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="./index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./html/designs.html">Designs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./html/checkout.html">Cart</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="./html/login.html">Login</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-              </nav>
-        </header>
-    </section>
 
-    <!-- HERO/CAROUSEL -->
-    <section>
-        <div class="container">
-            <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body position-absolute" style="width: 100%;" id="navbarContainer">
+    </nav> <!--modular-->
+
+    <main class="d-flex justify-content-center flex-column pt-5" style="height: 50vh;">
+        <h2 class="text-center mt-5">Bake the Difference with BuyNbakeRecipes - <br> Where Every Recipe Tells a Story!</h2>
+        <h5 class="text-center">"Indulge your passion for baking at BuyNbakeRecipes, where delightful recipes meet seamless shopping.<br>
+            Explore, shop, and savor the joy of creating in one place. Your baking journey begins here!"</h5>
+    </main>
+
+    <section class="d-flex flex-column py-5">
+        <h2 class="text-center">Featured Recipes</h2>
+        <h5 class="text-center mb-5">"Explore our curated collection of Featured Recipes - <br>
+            a delightful selection that promises to inspire and elevate your baking experience.”
+        </h5>
+
+        <div class="row d-flex flex-row justify-content-between m-0" style="padding: 0 15%;">
+            <div class="col-lg-4 col-12 d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: large;">Moist Chocolate Layer Cake</h5>
+                        <small class="card-text"><p>A classic and indulgent chocolate cake that fits perfectly into the "Cake Classics" category. It's rich, moist, and a favorite for chocolate lovers.</p></small>
+                    </div>
+                    <img src="https://scientificallysweet.com/wp-content/uploads/2020/09/IMG_4087-feature-2.jpg" height="250px"
+                        class="card-img-bottom" alt="...">
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://raw.githubusercontent.com/suengit6/CozyChic-Images-Final/main/Stock%20Photos/HeroCarousel/heropic3.jpg" alt="Image 1">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>Sweet</h5>
-                            <p>Gives a cute aesthetic.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://raw.githubusercontent.com/suengit6/CozyChic-Images-Final/main/Stock%20Photos/HeroCarousel/heropic2.jpg" alt="Image 2">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>Surprise</h5>
-                            <p>Go out with style and wow others.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://raw.githubusercontent.com/suengit6/CozyChic-Images-Final/main/Stock%20Photos/HeroCarousel/heropic1.jpg" alt="Image 3">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>Style</h5>
-                            <p>Unique appearance gives off happy vibes.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
+            <div class="col-lg-4 col-12 d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: large;">Banana Oatmeal Muffins</h5>
+                        <small class="card-text"><p>These muffins are a healthier option, incorporating bananas and oats for added nutrition. They're perfect for those looking for a delicious yet wholesome treat.</p></small>
+                    </div>
+                    <img src="https://www.beyondthechickencoop.com/wp-content/uploads/2021/02/Oatmeal-Banana-Muffins.jpg" height="250px"
+                        class="card-img-bottom" alt="...">
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: large;">Classic Croissants</h5>
+                        <small class="card-text"><p>Offering a delightful flakiness and buttery taste, these classic croissants fall into the "Bread & Pastries" category. Perfect for breakfast or a midday snack.</p></small>
+                    </div>
+                    <img src="https://www.foodrepublic.com/img/gallery/definitive-classic-butter-croissant-recipe/l-intro-1684859945.jpg" height="250px"
+                        class="card-img-bottom" alt="...">
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- PARTNERS -->
-    <section>
-        <div class="container-2">
-            <h1>Partnered with...</h1>
-            <div class="collab-images">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/uniqlo.png?raw=true" alt="">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/h&m.png?raw=true" alt="">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/miniso.png?raw=true" alt="">
-            </div>
-            <div class="feature-products">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/uniqlo.png?raw=true" alt="">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/h&m.png?raw=true" alt="">
-                <img src="https://github.com/suengit6/CozyChic-Images-Final/blob/main/Collab/miniso.png?raw=true" alt="">
-            </div>
+    <section class="aboutUs row p-5 d-flex justify-content-evenly m-0" style="background-color: #AF9B46;">
+        <div class="col-lg-6 d-flex justify-content-center">
+             <img src="https://images.crowdspring.com/blog/wp-content/uploads/2023/05/16174534/bakery-hero.png" height="400px" width="100%" alt="">  
+        </div>
+
+        <div class="col-lg-6 aboutUsText d-flex flex-column align-items-center justify-content-center">
+            <h2 class="text-center">About Us!</h2>
+            <h6 class="text-center" style="width: auto;">Welcome to BuyNbakeRecipes! We're your go-to spot for delightful recipes and hassle-free baking. Explore a variety of recipes, shop for ingredients securely, and manage your favorites and orders with ease. Whether you're a seasoned baker or just starting out, our platform is designed for your baking joy. Join our community and let's make baking br simple and fun together!</h6>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <section>
-        <footer class="text-light py-4">
-            <div class="container-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5>Customer Help</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Shipping Information</a></li>
-                            <li><a href="#">Returns & Exchanges</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Corporate Policies</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Social Media</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Friendly Support</h5>
-                        <p>If you need any assistance, our support team is here to help.</p>
-                        <p>Email: support@example.com</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
     
+    <section class="faq d-flex flex-column justify-content-center p-5" style="background-color: #DFD6A7;">
+        <h2 class="text-center">FAQS</h2><br>
+        <h5 class="text-center">Find The Answers Here. <br><br> There are so many questions when it comes to baked goods. No question is too big or too small for our <br> team to answer, so feel free to reach out and ask whatever is on your mind. We’ll help you find the treat <br> that’s right for you!</h5>
+        <button class="btn btn-outline-dark">
+            HOW DO I KEEP MY PURCHASES FRESH?<br>
+            Store them in a proper container and store in cool area.
+        </button>
+        <button class="btn btn-outline-dark">
+            DO YOU MAKE ANY VEGAN ITEMS?<br>
+            Yes we do!
+        </button>
+        <button class="btn btn-outline-dark">
+            DO YOU OFFER GLUTEN FREE ITEMS?<br>
+            Yes we do!
+        </button>
     </section>
 
-    <!-- BOOTSTRAP JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="./templating/nav.js" defer></script>
+    <script src="./templating/footer.js" defer></script>
+
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+
 
 </body>
 </html>

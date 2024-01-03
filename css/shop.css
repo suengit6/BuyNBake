@@ -1,0 +1,29 @@
+*{
+    font-family: 'Jacques Francois';
+}
+
+#viewCart{
+   background-color: #AF9B46;
+}
+.card-title{
+    background-color: #AF9B46;
+}
+.card-body{
+    background-color: #DFD6A7;
+}
+.card button{
+    background-color: #af9b46;
+}
+button{
+    transition: background-color 0.3s ease!important;
+}
+button:hover{
+    background-color: #c4ae4f!important; 
+}
+.row .col-lg-3{
+    display: flex;
+    justify-content: center;
+}
+.row .col-lg-3 .card{
+    width: 80%;
+}

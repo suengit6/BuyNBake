@@ -1,0 +1,26 @@
+*{
+    font-family: 'Jacques Francois';
+}
+main{
+    background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/026/984/original/overhead-view-of-baking-ingredients-and-a-notepad-royalty-free-image-930086476-1546440806.jpg?1644536911");   
+}
+main, section{
+    line-height: 1.75;
+}
+main h5, section h5{
+    font-size: small;
+}
+.card{
+    background-color: #DFD6A7;
+}
+.aboutUsText{
+    color: white;
+}
+.aboutUsText h6{
+    line-height: 1.3!important;
+}
+.faq button{
+    width: 80%;
+    margin: auto;
+}
+

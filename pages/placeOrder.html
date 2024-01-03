@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <!-- styles -->
+    <link rel="stylesheet" href="../css/placeOrder.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  
+
+</head>
+    
+<body>
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
+        <!-- Add your navigation content here -->
+    </nav>
+
+    <main class="container">
+        <button style="transition: background-color 0.3s ease!important; border: none; background-color: #af9b46; color: white;" onmouseover="this.style.backgroundColor='#c4ae4f'" onmouseout="this.style.backgroundColor='#af9b46'" onclick="back()"> &lt; Back</button>
+
+        <div id="cartContents"></div>
+        <p id="productTotalPrice">Product Total Price: Php 0.00</p>
+        <p>Shipping Fee: Php 100.00</p>
+        <p id="totalPriceWithShipping">Total Price with Shipping: Php 0.00</p>
+    
+        <form class="d-flex flex-column">
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+            <br>
+            <button id="checkout-button" onclick="saveAddress()" type="button">Confirm Order</button>
+        </form>
+    </main>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer"></footer>
+
+<!-- scripts -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="../templating/navpages.js" defer></script>
+<script src="../templating/footer.js" defer></script>
+<script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+<script defer>
+    const cartContentsElement = document.getElementById('cartContents');
+    const productTotalPriceElement = document.getElementById('productTotalPrice');
+    const totalPriceWithShippingElement = document.getElementById('totalPriceWithShipping');
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        if (!cartContentsElement || !productTotalPriceElement || !totalPriceWithShippingElement) {
+            console.error('Required elements not found.');
+            return;
+        }
+
+        // Retrieve the user's ID from localStorage
+        const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+        const userId = userAccount.userId;
+
+        // Retrieve the cart data from localStorage using the user's ID
+        const storedCart = localStorage.getItem(`cart_${userId}`);
+        const cart = storedCart ? JSON.parse(storedCart) : {};
+
+        // Calculate the total price of the products
+        let productTotalPrice = 0;
+
+        for (const productId in cart) {
+            const { quantity, price } = cart[productId];
+            productTotalPrice += quantity * price;
+        }
+
+        // Display the total price of the products
+        productTotalPriceElement.innerText = `Product Total Price: Php ${productTotalPrice.toFixed(2)}`;
+
+        // Calculate the total price with shipping (assuming a flat rate of 100 PHP)
+        const totalPriceWithShipping = productTotalPrice + 100;
+
+        // Display the total price with shipping
+        totalPriceWithShippingElement.innerText = `Total Price with Shipping: Php ${totalPriceWithShipping.toFixed(2)}`;
+
+        // Display cart contents
+        for (const productId in cart) {
+            const { quantity, price } = cart[productId];
+            const productParagraph = document.createElement('p');
+            productParagraph.innerText = `Product Name: ${productId}, Quantity: ${quantity}, Price: Php ${price.toFixed(2)}`;
+            cartContentsElement.appendChild(productParagraph);
+        }
+    });
+
+    function redirectToPage() {
+        window.location.href = 'shop.html';
+    }
+
+    function back() {
+        // Go back to the previous page
+        window.history.back();
+    }
+
+    function saveAddress() {
+    var addressInput = document.getElementById('address');
+    var addressValue = addressInput.value;
+
+    // Retrieve the user's ID from localStorage
+    const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+    const userId = userAccount.userId;
+
+    if (addressValue.trim() !== '') {
+        // Save the address in the userAccount object
+        userAccount.address = addressValue;
+
+        // Save the updated userAccount object to localStorage
+        localStorage.setItem('userAccount', JSON.stringify(userAccount));
+
+        alert('Delivery address saved successfully!');
+    } else {
+        alert('Please enter a valid delivery address.');
+    }
+}
+
+window.onload = function () {
+    // Retrieve the user's ID from localStorage
+    const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+    const userId = userAccount.userId;
+
+    // Check if the userAccount object has the address property
+    if (userAccount.address) {
+        document.getElementById('address').value = userAccount.address;
+    }
+};
+</script>
+
+
+
+<!-- Stripe Checkout script -->
+<script src="https://js.stripe.com/v3/" defer></script>
+<script src="../public/app.js" defer></script>
+    
+</body>
+</html>

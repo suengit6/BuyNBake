@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- Add your styles if needed -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="adminLoginForm">
+        <h2>Admin Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function login() {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Perform your admin login logic here
+            // You may want to compare username and password against stored values
+
+            // For demonstration purposes, let's assume a simple check
+            if (username === 'admin' && password === 'adminpassword') {
+                // Generate a token (you might want to use a more secure method)
+                const adminToken = generateToken();
+                // Store the token in local storage
+                localStorage.setItem('adminToken', adminToken);
+                alert('Login successful!');
+                // Redirect to the admin panel or perform further actions
+                window.location.href = 'admin.html';
+            } else {    
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
+        function generateToken() {
+            // Generate a random token (you might want to use a more secure method)
+            return Math.random().toString(36).substr(2) + Date.now().toString(36);
+        }
+    </script>
+</body>
+</html>

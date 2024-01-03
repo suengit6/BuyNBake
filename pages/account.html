@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNBake</title>
+
+    <!-- links -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
+        <!--modular-->
+    </nav> 
+    <main class="container pt-5">
+        <div class="profile row">
+            <div class="col-lg-6 col-12 d-flex align-items-center">
+                <input type="file" id="profilePicInput" style="display: none;">
+                <label for="profilePicInput">
+                    <img id="profilePic" src="" alt="Click to edit" style="cursor: pointer; object-fit: fill;">
+                </label>
+                <h3 style="width: fit-content;" id="fullName">Full Name</h3>
+            </div>
+        </div>
+        <hr>    
+    </main>
+
+    
+
+    <section class="d-flex justify-content-evenly">
+        <a class="btn btn-primary" href="./account.html">My Account</a>
+        <a class="btn btn-primary" href="./shop.html">View Cart</a>
+    </section>
+    
+
+    <form class="container mb-5">
+        <hr>
+        <section>
+            <h6>My Account</h6>
+            <small><p>View and edit your personal info below.</p></small>
+            <div>
+                <button>Discard</button>
+                <button id="updateInfoBtn">Update Info</button>
+            </div>
+        </section>
+
+
+        <hr>
+
+        <section>
+            <h6>Display Info</h6>
+            <small><p>Update your personal information.</p></small>
+            <div>
+                <label for="firstName">First Name*</label>
+                <input type="text" name="firstName" id="firstName">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone">
+            </div>
+        </section>
+
+        <hr>
+        <button id="logoutBtn">Log-out</button>
+
+
+    </form>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the user is logged in
+            var loggedIn = localStorage.getItem('loggedIn');
+    
+            // If not logged in, redirect to the login page
+            if (loggedIn !== 'true') {
+                alert("Please login first.");
+                window.location.href = 'login.html';
+            }
+    
+            // Populate the form with user account information
+            var userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+            
+            // Check if the user has a userId, if not, generate one
+            userAccount.userId = userAccount.userId || generateUserId();
+    
+            document.getElementById('firstName').value = userAccount.firstName || '';
+            document.getElementById('lastName').value = userAccount.lastName || '';
+            document.getElementById('phone').value = userAccount.phone || '';
+    
+            // Set profile picture
+            if (userAccount.profilePicSrc) {
+                document.getElementById('profilePic').src = userAccount.profilePicSrc;
+            }
+    
+            // Optionally, load the user's cart based on their userId
+            var userCart = JSON.parse(localStorage.getItem(`cart_${userAccount.userId}`)) || [];
+    
+            // Log the user's cart to the console for demonstration purposes
+            console.log("User Cart:", userCart);
+    
+            // Add event listener for the "Update Info" button
+            document.getElementById('updateInfoBtn').addEventListener('click', function () {
+                // Update the user account information in local storage
+                userAccount.firstName = document.getElementById('firstName').value;
+                userAccount.lastName = document.getElementById('lastName').value;
+                userAccount.phone = document.getElementById('phone').value;
+    
+                localStorage.setItem('userAccount', JSON.stringify(userAccount));
+    
+                // Optionally, display a success message or perform additional actions
+                alert('Account information updated successfully!');
+            });
+    
+            // Add event listener for the logout button
+            document.getElementById('logoutBtn').addEventListener('click', function () {
+                // Clear necessary items from local storage
+                localStorage.removeItem('loggedIn');
+    
+                // Save user account info to a separate key
+                var userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+                if (userAccount) {
+                    var loggedOutAccounts = JSON.parse(localStorage.getItem('loggedOutAccounts')) || [];
+                    loggedOutAccounts.push(userAccount);
+                    localStorage.setItem('loggedOutAccounts', JSON.stringify(loggedOutAccounts));
+                }
+    
+                // Redirect to the login page
+                window.location.href = 'login.html';
+            });
+    
+            // Check if there is a saved image source in local storage
+            const savedImageSrc = userAccount ? userAccount.profilePicSrc : null;
+    
+            if (savedImageSrc) {
+                document.getElementById('profilePic').src = savedImageSrc;
+            }
+    
+            // Function to handle image click and allow the user to upload a new image
+            document.getElementById('profilePicInput').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+    
+                if (file) {
+                    // Convert the image to Base64
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const newImageSrc = e.target.result;
+                        document.getElementById('profilePic').src = newImageSrc;
+    
+                        // Update the 'userAccount' in local storage with the new image source
+                        userAccount.profilePicSrc = newImageSrc;
+                        localStorage.setItem('userAccount', JSON.stringify(userAccount));
+                    };
+    
+                    reader.readAsDataURL(file);
+                }
+            });
+    
+            // Function to handle sharing profile
+            function shareProfile() {
+                alert('Profile shared!');
+            }
+    
+            // Function to generate a random userId (for illustration purposes)
+            function generateUserId() {
+                return Math.random().toString(36).substr(2, 9);
+            }
+        });
+    </script>
+
+    <script>
+        // Check if there is a userAccount in local storage
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+
+        // Update the profile picture and full name
+        if (userAccount) {
+            document.getElementById('fullName').textContent = `${userAccount.firstName} ${userAccount.lastName}`;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="../templating/navpages.js"></script>
+    <script src="../templating/footerpages.js"></script>    
+
+</body>
+</html>

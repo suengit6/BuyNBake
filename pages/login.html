@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+        <!-- styles -->
+        <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  
+
+</head>
+    
+<body>
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
+        <!-- Add your navigation content here -->
+    </nav>
+
+    <div class="container">
+        <form class="card shadow-md p-5 mb-5" onsubmit="login(event)">
+            <h3 class="text-center">Login</h3>
+            <!-- Add your login form fields here (email and password) -->
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <!-- Display login error, if any -->
+            <div id="loginError" class="alert alert-danger" role="alert" style="display: none;"></div>
+            <div class="d-flex mt-3 justify-content-center">
+                <p style="width: fit-content;">Don't have an account?&nbsp;</p>
+                <span><a href="register.html" style="width: fit-content;">Register!</a></span>
+            </div>
+            <div class="d-flex justify-content-center m-2">
+                <input class="btn btn-primary px-5 py-3" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer"></footer>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../templating/navpages.js" defer></script>
+    <script src="../templating/footer.js" defer></script>
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+    <script defer>
+        function login(event) {
+            event.preventDefault();
+    
+            // Get input values
+            var enteredEmail = document.getElementById("email").value;
+            var enteredPassword = document.getElementById("password").value;
+    
+            // Retrieve the stored user account from local storage
+            var storedUserAccount = localStorage.getItem('userAccount');
+    
+            if (storedUserAccount) {
+                // Parse the stored JSON string into an object
+                var userAccount = JSON.parse(storedUserAccount);
+    
+                // Check if the entered credentials match the stored user account
+                if (enteredEmail === userAccount.email && enteredPassword === userAccount.password) {
+                    // Redirect to the account page or perform other actions
+                    localStorage.setItem('loggedIn', 'true');
+                    window.location.href = "account.html";
+                } else {
+                    // Display login error
+                    document.getElementById("loginError").innerText = "Invalid credentials. Please try again.";
+                    document.getElementById("loginError").style.display = "block";
+                }
+            } else {
+                // Display login error (no stored user account)
+                document.getElementById("loginError").innerText = "No user account found. Please register.";
+                document.getElementById("loginError").style.display = "block";
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

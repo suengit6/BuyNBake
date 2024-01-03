@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+</head>
+    
+<body>
+            
+    
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
+    </nav> <!--modular-->
+    
+    <div class="container">
+        <form class="card shadow-md p-5 mb-5" onsubmit="registerAccount(event)">
+            <h3 class="text-center">Register</h3>
+            <label for="name" style="width: 100%;">Name</label>
+            <div class="d-flex justify-content-between">
+                <input type="text" name="firstName" id="firstName" placeholder="First Name" style="width: 49%;" required>
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name" style="width: 49%;" required>
+            </div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+            <div class="d-flex mt-3 justify-content-center">
+                <p style="width: fit-content;">Already have an account?&nbsp;</p>
+                <span><a href="login.html" style="width: fit-content;">Login!</a></span>
+            </div>
+            <div class="d-flex justify-content-center m-2">
+                <input class="btn btn-primary px-5 py-3" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+    
+    
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../templating/navpages.js" defer></script>
+    <script src="../templating/footer.js" defer></script>
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+    <script defer>
+        function registerAccount(event) {
+            event.preventDefault();
+
+            // Get input values
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Create an object to represent the user account
+            var userAccount = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+
+            // Store the user account in local storage
+            localStorage.setItem('userAccount', JSON.stringify(userAccount));
+
+            // Optionally, you can redirect the user to the login page
+            window.location.href = "login.html";
+        }
+    </script>
+    
+    
+</body>
+</html>
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Add your styles if needed -->
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <h2>Users Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Delivery Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+    </table>
+
+    <h2>Orders Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Delivery Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTableBody"></tbody>
+    </table>
+
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function completeOrder(userId, productName) {
+                const orderKey = `cart_${userId}`;
+                const orderData = JSON.parse(localStorage.getItem(orderKey)) || {};
+
+                // Update the status to 'Complete'
+                orderData[productName].status = 'Complete';
+
+                // Save the updated order data back to localStorage
+                localStorage.setItem(orderKey, JSON.stringify(orderData));
+
+                // Re-render the orders table
+                renderOrdersTable();
+
+                alert(`Order completed for User ID: ${userId}, Product: ${productName}`);
+            }
+
+            function renderUsersTable() {
+                const usersTableBody = document.getElementById('usersTableBody');
+                usersTableBody.innerHTML = '';
+
+                // Retrieve user accounts from localStorage
+                const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+                const loggedOutAccounts = JSON.parse(localStorage.getItem('loggedOutAccounts')) || {};
+
+                const allUsers = [userAccount, ...Object.values(loggedOutAccounts)];
+
+                // Display user accounts in the table
+                allUsers.forEach(user => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.userId}</td>
+                        <td>${user.firstName || 'N/A'}</td>
+                        <td>${user.lastName || 'N/A'}</td>
+                        <td>${user.email || 'N/A'}</td>
+                        <td>${user.phone || 'N/A'}</td>
+                        <td>${user.address || 'N/A'}</td>
+                        <td><button onclick="deleteUser('${user.userId}')">Delete</button></td>
+                    `;
+                    usersTableBody.appendChild(row);
+                });
+            }
+
+            function renderOrdersTable() {
+                const ordersTableBody = document.getElementById('ordersTableBody');
+                ordersTableBody.innerHTML = '';
+
+                // Retrieve user accounts from localStorage
+                const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+
+                // Retrieve order data from localStorage
+                const orderData = Object.keys(localStorage)
+                    .filter(key => key.startsWith('cart_'))
+                    .map(key => ({ userId: key.replace('cart_', ''), order: JSON.parse(localStorage.getItem(key)) }));
+
+                // Display order data in the table
+                orderData.forEach(order => {
+                    for (const productName in order.order) {
+                        const { quantity, price, status = 'Pending' } = order.order[productName];
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${order.userId}</td>
+                            <td>${productName}</td>
+                            <td>${quantity}</td>
+                            <td>${price.toFixed(2)}</td>
+                            <td>${userAccount.address || 'N/A'}</td>
+                            <td>${status}</td>
+                            <td><button onclick="completeOrder('${order.userId}', '${productName}')">Complete</button></td>
+                        `;
+                        ordersTableBody.appendChild(row);
+                    }
+                });
+            }
+
+            window.deleteUser = function (userId) {
+                // Implement the logic to delete user
+                // You may want to ask for confirmation before deletion
+                alert(`User with ID ${userId} deleted.`);
+                renderUsersTable(); // Update the table after deletion
+            };
+
+            // Initial rendering of the users and orders tables
+            renderUsersTable();
+            renderOrdersTable();
+        });
+
+    </script>
+    
+    <script>
+        function login() {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Perform your admin login logic here
+            // For demonstration purposes, let's assume a simple check
+            if (username === 'admin' && password === 'adminpassword') {
+                // Generate a token (you might want to use a more secure method)
+                const adminToken = generateToken();
+                // Store the token in local storage
+                localStorage.setItem('adminToken', adminToken);
+                alert('Login successful!');
+                // Redirect to the admin panel or perform further actions
+                window.location.href = 'admin.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
+        function generateToken() {
+            // Generate a random token (you might want to use a more secure method)
+            return Math.random().toString(36).substr(2) + Date.now().toString(36);
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            alert('Admin logged out.');
+            window.location.href = 'adminLogin.html';
+        }
+
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the admin is logged in
+            const isAdminLoggedIn = localStorage.getItem('adminToken');
+
+            if (!isAdminLoggedIn) {
+                // Admin is not logged in, redirect to the login page
+                alert('Admin not logged in. Redirecting to login page...');
+                window.location.href = 'adminLogin.html';
+            }
+        });
+    </script>
+
+
+</body>
+</html>

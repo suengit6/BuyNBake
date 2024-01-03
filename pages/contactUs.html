@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNBakeRecipes</title>
+
+    <!-- links -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/contactUs.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body position-absolute" style="width: 100%;" id="navbarContainer">
+    </nav> <!--modular-->
+
+    <main class="d-flex justify-content-center flex-column pt-5" style="height: 50vh;">
+        <h2 class="text-center mt-5">Bake the Difference with BuyNbakeRecipes - <br> Where Every Recipe Tells a Story!</h2>
+        <h5 class="text-center">"Indulge your passion for baking at BuyNbakeRecipes, where delightful recipes meet seamless shopping.<br>
+            Explore, shop, and savor the joy of creating in one place. Your baking journey begins here!"</h5>
+    </main>
+
+    <section class="aboutUs row p-5 d-flex justify-content-evenly m-0" style="background-color: #AF9B46;">
+        <div class="row">
+            <div class="col-4 d-flex flex-column text-center align-items-center">
+                <i class="fa-solid fa-location-dot rounded-circle p-3" style="background-color: white; width: fit-content;"></i>
+                <h4>Address</h4>
+                <small><p>123 Baker Street, Ovenville, Bakesland, Dessertopia, CA 98765, USA</p></small>
+            </div>
+            <div class="col-4 d-flex flex-column text-center align-items-center">
+                <i class="fa-solid fa-location-dot rounded-circle p-3" style="background-color: white; width: fit-content;"></i>
+                <h4>Phone</h4>
+                <small><p>John Doe <br>
+                    0912-345-6789 <br>
+                    Jane Doe <br>
+                    0912-345-6789</p></small>
+            </div>
+            <div class="col-4 d-flex flex-column text-center align-items-center">
+                <i class="fa-solid fa-location-dot rounded-circle p-3" style="background-color: white; width: fit-content;"></i>
+                <h4>Email</h4>
+                <small><p>sweettreats@emailprovider.com</p></small>
+            </div>
+        </div>
+    </section>
+
+    <section class="contactForm container my-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Message Us</h3>
+                <small><p>Drop us a line! Whether you have a question about a recipe, need baking tips, or just want to share your baking adventures, we're here to chat. Your messages make our day a little sweeter!</p></small>
+                <h4>BuyNBakeRecipes</h4>
+                <small><p>
+                    Your Culinary Haven for Inspired Baking and Seamless Shopping. Explore a world of delightful recipes, shop for quality ingredients, and join a community passionate about the joy of baking. 
+                    <br>
+                    Elevate your baking experience with us!
+                </p></small>
+            </div>
+            <div class="col-lg-6 ">
+               <form class="row" onsubmit="success()">
+                    <h3 class="my-3">Name</h3>
+                    <div class="col-6 d-flex flex-column">
+                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <input type="text" id="lastName" name="lastName" required>
+                        <label for="lastName">Last Name</label>
+                    </div>
+                    <h3 class="my-3">Email</h3>
+                    <div class="email d-flex flex-column">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="message d-flex flex-column">
+                        <h3 class="my-3">Message</h3>
+                        <input class="py-5" type="text" name="message" id="message" required>
+                    </div>
+                    <div class="submit mt-3">
+                        <input class="p-1 btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <section class="map container-fluid">
+        <iframe
+        width="100%"
+        height="540px"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCp83e3JYAH3Ygw0VeiiAge1OOW10Iwmjk
+            &q=Space+Needle,Seattle+WA">
+        </iframe>
+    </section>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="../templating/navpages.js" defer></script>
+    <script src="../templating/footerpages.js"></script>    
+
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+    <script>
+        function success(){
+            alert("Message sent!");
+        }
+    </script>
+
+
+
+</body>
+</html>
