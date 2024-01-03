@@ -242,101 +242,99 @@
     <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
 
     <script defer>
-        // Retrieve user information and generate user ID
-        var userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
-        userAccount.userId = userAccount.userId || generateUserId();
-    
-        // Retrieve cart data using the user's ID
-        var cart = getCartFromLocalStorage(userAccount.userId);
-    
-        function generateUserId() {
-            return Math.random().toString(36).substr(2, 9);
-        }
-    
-        function getCartFromLocalStorage(userId) {
-            return JSON.parse(localStorage.getItem(`cart_${userId}`)) || {};
-        }
-    
-        function updateCartContentsText() {
-            const cartContentsElement = document.getElementById('cartContents');
-            cartContentsElement.innerHTML = Object.keys(cart).length === 0 ? '<p>Cart is empty</p>' : '';
-        }
-    
-        function closeCart() {
-            const cartContainer = document.getElementById('cartContainer');
-            cartContainer.style.display = "none";
-            updateCartContentsText();
-        }
-    
-        function clearCart() {
-            localStorage.setItem(`cart_${userAccount.userId}`, JSON.stringify({}));
-            cart = getCartFromLocalStorage(userAccount.userId);
-            updateCartContentsText();
-    
-            const totalPriceElement = document.getElementById('totalPrice');
-            totalPriceElement.innerText = 'Total Product Price: Php 0.00';
-        }
-    
-        function purchase() {
-        // Retrieve cart data using the user's ID
-            const cart = getCartFromLocalStorage(userAccount.userId);
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
-            if (Object.keys(cart).length === 0) {
-                alert('Your cart is empty. Add items to the cart before making a purchase.');
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
                 return;
             }
 
-            const cartData = JSON.stringify(cart);
+            var userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+            userAccount.userId = userAccount.userId || generateUserId();
 
-            // Redirect to the place order page
-            window.location.href = 'placeOrder.html';
-        }
+            var cart = getCartFromLocalStorage(userAccount.userId);
 
+            function generateUserId() {
+                return Math.random().toString(36).substr(2, 9);
+            }
 
-    
-        document.addEventListener('DOMContentLoaded', function () {
+            function getCartFromLocalStorage(userId) {
+                return JSON.parse(localStorage.getItem(`cart_${userId}`)) || {};
+            }
+
+            function updateCartContentsText() {
+                const cartContentsElement = document.getElementById('cartContents');
+                cartContentsElement.innerHTML = Object.keys(cart).length === 0 ? '<p>Cart is empty</p>' : '';
+            }
+
+            function closeCart() {
+                const cartContainer = document.getElementById('cartContainer');
+                cartContainer.style.display = "none";
+                updateCartContentsText();
+            }
+
+            function clearCart() {
+                localStorage.setItem(`cart_${userAccount.userId}`, JSON.stringify({}));
+                cart = getCartFromLocalStorage(userAccount.userId);
+                updateCartContentsText();
+
+                const totalPriceElement = document.getElementById('totalPrice');
+                totalPriceElement.innerText = 'Total Product Price: Php 0.00';
+            }
+
+            function purchase() {
+                const cart = getCartFromLocalStorage(userAccount.userId);
+
+                if (Object.keys(cart).length === 0) {
+                    alert('Your cart is empty. Add items to the cart before making a purchase.');
+                    return;
+                }
+
+                const cartData = JSON.stringify(cart);
+
+                window.location.href = 'placeOrder.html';
+            }
+
             const viewCartButton = document.getElementById('viewCart');
             const clearCartButton = document.getElementById('clearCartButton');
             const purchaseButton = document.getElementById('purchaseButton');
-    
+
             if (viewCartButton) {
                 viewCartButton.addEventListener('click', function () {
                     const cartContentsElement = document.getElementById('cartContents');
                     const cartContainer = document.getElementById('cartContainer');
                     const totalPriceElement = document.getElementById('totalPrice');
-    
+
                     let totalPrice = 0;
-    
+
                     cartContentsElement.innerHTML = '';
-    
+
                     for (const productId in cart) {
                         const { quantity, price } = cart[productId];
                         totalPrice += quantity * price;
-    
+
                         const productParagraph = document.createElement('p');
                         productParagraph.innerText = `Product Name: ${productId}, Quantity: ${quantity}, Price: Php ${price.toFixed(2)}`;
                         cartContentsElement.appendChild(productParagraph);
                     }
-    
+
                     totalPriceElement.innerText = `Total Product Price: Php ${totalPrice.toFixed(2)}`;
-    
+
                     cartContainer.style.display = "block";
                     cartContainer.style.position = "absolute";
                     window.scrollTo(0, 0);
                 });
-            } else {
-                console.error('View Cart button not found.');
             }
-    
+
             if (clearCartButton) {
                 clearCartButton.addEventListener('click', clearCart);
             }
-    
+
             if (purchaseButton) {
                 purchaseButton.addEventListener('click', purchase);
             }
-    
-            // Event listeners for "Add to Cart" buttons
+
             const addToCartButtons = document.querySelectorAll('.btn');
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', function () {
@@ -344,19 +342,17 @@
                     const quantityInput = button.closest('.card-body').querySelector('.quantityInput');
                     const productPrice = parseFloat(quantityInput.closest('.card-body').querySelector('.card-header.mb-3').innerText.replace('Php ', ''));
                     const quantity = parseInt(quantityInput.value);
-    
+
                     if (isNaN(quantity) || quantity <= 0) {
                         alert('Please enter a valid quantity.');
                         return;
                     }
-    
-                    // Add the product to the cart[id]
+
                     cart[productId] = {
                         quantity: (cart[productId] && cart[productId].quantity || 0) + quantity,
                         price: productPrice
                     };
-    
-                    // Copy the cart[id] keys to the cart key
+
                     const updatedCart = {};
                     for (const productId in cart) {
                         updatedCart[productId] = {
@@ -364,15 +360,13 @@
                             price: cart[productId].price
                         };
                     }
-    
-                    // Update the local storage with the modified cart
+
                     localStorage.setItem(`cart_${userAccount.userId}`, JSON.stringify(updatedCart));
-    
+
                     alert(`Added ${quantity} ${productId}(s) to your cart.`);
                 });
             });
         });
-    
     </script>
     
     

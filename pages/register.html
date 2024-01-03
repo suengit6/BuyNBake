@@ -53,28 +53,35 @@
     <script defer>
         function registerAccount(event) {
             event.preventDefault();
-
+    
             // Get input values
             var firstName = document.getElementById("firstName").value;
             var lastName = document.getElementById("lastName").value;
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
-
+    
             // Create an object to represent the user account
             var userAccount = {
+                userId: generateUserId(),
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password
             };
-
+    
             // Store the user account in local storage
             localStorage.setItem('userAccount', JSON.stringify(userAccount));
-
+    
             // Optionally, you can redirect the user to the login page
             window.location.href = "login.html";
         }
+    
+        // Function to generate a random userId (for illustration purposes)
+        function generateUserId() {
+            return Math.random().toString(36).substr(2, 9);
+        }
     </script>
+    
     
     
 </body>
