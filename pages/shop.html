@@ -258,7 +258,7 @@
             }
     
             const userAccount = JSON.parse(localStorage.getItem('userAccount')) || { userId: generateUserId() };
-            const cart = getCartFromLocalStorage(userAccount.userId);
+            let cart = getCartFromLocalStorage(userAccount.userId);
     
             function generateUserId() {
                 return Math.random().toString(36).substr(2, 9);
@@ -277,7 +277,7 @@
     
             function clearCart() {
                 localStorage.setItem(`cart_${userAccount.userId}`, JSON.stringify({}));
-                Object.keys(cart).forEach(productId => delete cart[productId]);
+                cart = getCartFromLocalStorage(userAccount.userId);
     
                 updateCartContentsText();
     
@@ -325,8 +325,8 @@
             function addToCart(productId, quantity, price) {
                 // Check if cart is empty before adding a product
                 if (Object.keys(cart).length === 0) {
-                    alert('Your cart is empty. Add items to the cart before adding a product.');
-                    return;
+                    localStorage.setItem(`cart_${userAccount.userId}`, JSON.stringify({}));
+                    cart = getCartFromLocalStorage(userAccount.userId);
                 }
     
                 cart[productId] = {
@@ -383,10 +383,5 @@
         });
     </script>
 
-
-
-
-    
-    
 </body>
 </html>
