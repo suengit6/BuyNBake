@@ -3,7 +3,7 @@ function generateNav() {
 
     return `
             <div class="flex-row-reverse" id="navbarNav" >
-                <ul class="navbar-nav">
+                <ul class="navbar-nav topNav">
                     <li class="nav-item">
                         <a class="nav-link" href="https://facebook.com">
                             <i class="fa-brands fa-facebook-f" style="color: #DFD6A7"></i>
@@ -52,7 +52,7 @@ function generateNav() {
                     </li>
                 </ul>
             </div>
-            <h5 class="contactUsNum">09999999999</h5>
+            <h5 class="contactUsNum">755-2099</h5>
         </div>
         <div class="container-fluid">
             <hr class="mx-auto" style="width: 95%; opacity: 1;">

@@ -1,14 +1,24 @@
-.topNav a{
-    font-size: small;
-    color: white;
+.nav-item .nav-link , .contactUsNum{	
+    text-decoration: underline;
 }
-
+.navbar-nav{
+	font-weight: 600;
+}
+.contactUsNum{
+	color: white;
+	font-family:Arial, Helvetica, sans-serif
+}
 @media (max-width: 768px) {
+#navbarNav{
+	width: 100%;
+}
  .topNav{
+    display: flex;
+    flex-direction: row;
+	justify-content: space-evenly;
+ }
+ .contactUsNum{
     display: none!important;
- }   
- .contactNum{
-    display: none;
  }
  .mainNav{
     margin: 0!important;

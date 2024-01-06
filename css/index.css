@@ -12,9 +12,11 @@ main h5, section h5{
 }
 .card{
     background-color: #DFD6A7;
+    margin: 20px 0;
 }
 .aboutUsText{
     color: white;
+    margin-top: 20px;
 }
 .aboutUsText h6{
     line-height: 1.3!important;

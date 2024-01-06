@@ -48,7 +48,7 @@ function generateFooter(){
         </div>    
     </div>
     <div class="footerBottom d-flex justify-content-between px-5" style="background-color: black; color: white;">
-        <h6>©2023 BuyNBakeRecipes. All rights reserved</h6>
+        <h6>©2023 BuyNBakeRecipes</h6>
         <a href="#">Privacy Policy</a>
     </div>
     `

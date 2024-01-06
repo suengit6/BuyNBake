@@ -12,3 +12,9 @@ footer a, .links h3 , .links li{
     display: flex;
     justify-content: center;
 }
+@media (max-width: 768px) {
+    .footerBottom h6, .footerBottom a{
+        text-align: center;
+        width: 40%;
+    }
+}

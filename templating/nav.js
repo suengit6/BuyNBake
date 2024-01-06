@@ -1,8 +1,7 @@
 function generateNav(){
     return `
-
         <div class="flex-row-reverse" id="navbarNav" >
-            <ul class="navbar-nav">
+            <ul class="navbar-nav topNav">
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.facebook.com">
                         <i class="fa-brands fa-facebook-f px-3" style="color: #DFD6A7"></i>
@@ -26,7 +25,7 @@ function generateNav(){
             </ul>
         </div>
     </div>
-    <div class="mainNav container-fluid pt-3 px-5" data-bs-theme="light">
+    <div class="mainNav container-fluid pt-3 px-5" data-bs-theme="dark">
         <a class="navbar-brand rounded p-2" href="./index.html" style="background-color: #AF9B46; color: white;">BuyNBakeRecipes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +50,7 @@ function generateNav(){
                 </li>
             </ul>
         </div>
-        <h5 class="contactNum">09999999999</h5>
+        <h5 class="contactUsNum"><span><i class="fa-solid fa-phone" style="margin-right: 8px"></i></span>755-2099</h5>
     </div>
     <div class="container-fluid">
         <hr class="mx-auto" style="width: 95%; opacity: 1;">
