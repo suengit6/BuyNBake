@@ -1,20 +1,6 @@
 function generateNav(){
     return `
-    <div class="container-fluid topNav" style="background-color: #1F1300;">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 3</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link 4</a>
-            </li>
-        </ul>
+
         <div class="flex-row-reverse" id="navbarNav" >
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -41,7 +27,7 @@ function generateNav(){
         </div>
     </div>
     <div class="mainNav container-fluid pt-3 px-5" data-bs-theme="light">
-        <a class="navbar-brand rounded p-2" href="#" style="background-color: #AF9B46; color: white;">BuyNBakeRecipes</a>
+        <a class="navbar-brand rounded p-2" href="./index.html" style="background-color: #AF9B46; color: white;">BuyNBakeRecipes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
