@@ -23,13 +23,13 @@
     <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body position-absolute" style="width: 100%;" id="navbarContainer">
     </nav> <!--modular-->
 
-    <main class="d-flex justify-content-center flex-column pt-5" style="height: 50vh;">
+    <main class="d-flex justify-content-center flex-column pt-5" style="height: 50vh;background-image:url(https://github.com/suengit6/activity-images/blob/main/vecteezy_cute-seamless-pattern-with-bakery-hand-drawn-doodles-on_5741869.jpg?raw=true); color: white;text-shadow: -1px 1px black;">
         <h2 class="text-center mt-5">Bake the Difference with BuyNbakeRecipes - <br> Where Every Recipe Tells a Story!</h2>
         <h5 class="text-center">"Indulge your passion for baking at BuyNbakeRecipes, where delightful recipes meet seamless shopping.<br>
             Explore, shop, and savor the joy of creating in one place. Your baking journey begins here!"</h5>
     </main>
 
-    <section class="aboutUs row p-5 d-flex justify-content-evenly m-0" style="background-color: #AF9B46;">
+    <section class="aboutUs row p-5 d-flex justify-content-evenly m-0" style="background-color: #af7546;">
         <div class="row">
             <div class="col-4 d-flex flex-column text-center align-items-center">
                 <i class="fa-solid fa-location-dot rounded-circle p-3" style="background-color: white; width: fit-content;"></i>
@@ -52,21 +52,27 @@
         </div>
     </section>
 
-    <section class="contactForm container my-5">
-        <div class="row">
-            <div class="col-lg-6">
+    <section class="contactForm container-fluid py-5" style="width: 100%; background-image: url(https://github.com/suengit6/activity-images/blob/main/uygeradkfhnj%20fdownload.jfif?raw=true); background-size: cover; background-position: top;">
+        <div class="row justify-content-around">
+            <div class="col-lg-6 card p-5 shadow-sm" style="width: 45%; background-color: rgba(255, 255, 255, 0.25); color: white;">
                 <h3>Message Us</h3>
-                <small><p>Drop us a line! Whether you have a question about a recipe, need baking tips, or just want to share your baking adventures, we're here to chat. Your messages make our day a little sweeter!</p></small>
+                <p>Drop us a line! Whether you have a question about a recipe, need baking tips, or just want to share your baking adventures, we're here to chat. Your messages make our day a little sweeter!</p>
+                <hr>
                 <h4>BuyNBakeRecipes</h4>
-                <small><p>
+                <p>
                     Your Culinary Haven for Inspired Baking and Seamless Shopping. Explore a world of delightful recipes, shop for quality ingredients, and join a community passionate about the joy of baking. 
                     <br>
                     Elevate your baking experience with us!
-                </p></small>
+                </p>
+                <hr>
+                <h4>Other ways to contact</h4>
+                <p>
+                    We can be contacted through our social medias, telephone number, email, and walk-in.
+                </p>
             </div>
-            <div class="col-lg-6 ">
-               <form class="row" onsubmit="success()">
-                    <h3 class="my-3">Name</h3>
+            <div class="col-lg-6 card shadow-sm" style="width: 45%; background-color: rgba(255, 255, 255, 0.25); color: white; ">
+               <form class="row p-5" style="width: 100%;" onsubmit="success()">
+                    <h3 class="text-center mb-5">Email Us!</h3>
                     <div class="col-6 d-flex flex-column">
                         <input type="text" id="firstName" name="firstName" required>
                         <label for="firstName">First Name</label>
@@ -75,8 +81,8 @@
                         <input type="text" id="lastName" name="lastName" required>
                         <label for="lastName">Last Name</label>
                     </div>
-                    <h3 class="my-3">Email</h3>
                     <div class="email d-flex flex-column">
+                        <br>
                         <input type="email" name="email" id="email" required>
                         <label for="email">Email</label>
                     </div>
@@ -84,17 +90,14 @@
                         <h3 class="my-3">Message</h3>
                         <input class="py-5" type="text" name="message" id="message" required>
                     </div>
-                    <div class="submit mt-3">
+                    <div class="submit mt-3 d-flex justify-content-center" style="width: 100%;">
                         <input class="p-1 btn btn-primary" type="submit" value="Submit">
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    
-    <hr>
-
-    <section class="map container-fluid">
+    <section class="map container-fluid pt-3" style="background-color: #6e471b9d;">
         <iframe
         width="100%"
         height="540px"

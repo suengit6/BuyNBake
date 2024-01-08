@@ -1,7 +1,7 @@
 function generateNav(){
     return `
-        <div class="flex-row-reverse" id="navbarNav" >
-            <ul class="navbar-nav topNav">
+        <div class="navbarNav" id="navbarNav" >
+            <ul class="navbar-nav topNav d-flex justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.facebook.com">
                         <i class="fa-brands fa-facebook-f px-3" style="color: #DFD6A7"></i>
@@ -32,7 +32,7 @@ function generateNav(){
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav navBottom">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                 </li>
@@ -50,7 +50,9 @@ function generateNav(){
                 </li>
             </ul>
         </div>
-        <h5 class="contactUsNum"><span><i class="fa-solid fa-phone" style="margin-right: 8px"></i></span>755-2099</h5>
+        <div class="contactUsNumCont" style="width:11rem">
+            <h5 class="contactUsNum"><span><i class="fa-solid fa-phone" style="margin-right: 8px"></i></span>755-2099</h5>
+        </div>
     </div>
     <div class="container-fluid">
         <hr class="mx-auto" style="width: 95%; opacity: 1;">

@@ -2,24 +2,24 @@ function generateNav() {
     const currentPage = window.location.pathname;
 
     return `
-            <div class="flex-row-reverse" id="navbarNav" >
-                <ul class="navbar-nav topNav">
-                    <li class="nav-item">
+            <div class="navbarNav" id="navbarNav">
+                <ul class="navbar-nav topNav d-flex justify-content-center">
+                    <li class="nav-item px-3">
                         <a class="nav-link" href="https://facebook.com">
                             <i class="fa-brands fa-facebook-f" style="color: #DFD6A7"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-3">
                         <a class="nav-link" href="https://twitter.com">
                             <i class="fa-brands fa-twitter" style="color: #DFD6A7"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-3">
                         <a class="nav-link" href="https://linkedin.com">
                             <i class="fa-brands fa-linkedin-in" style="color: #DFD6A7"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-3">
                         <a class="nav-link" href="https://instagram.com">
                             <i class="fa-brands fa-instagram" style="color: #DFD6A7"></i>
                         </a>
@@ -34,7 +34,7 @@ function generateNav() {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav navBottom">
                     <li class="nav-item">
                         <a class="nav-link ${currentPage.endsWith('/pages/index.html') ? 'active' : ''}" href="../index.html" aria-current="${currentPage.endsWith('/pages/index.html') ? 'page' : ''}">Home</a>
                     </li>
@@ -52,7 +52,9 @@ function generateNav() {
                     </li>
                 </ul>
             </div>
-            <h5 class="contactUsNum">755-2099</h5>
+            <div class="contactUsNumCont" style="width:11rem">
+                <h5 class="contactUsNum"><span><i class="fa-solid fa-phone" style="margin-right: 8px"></i></span>755-2099</h5>
+            </div>
         </div>
         <div class="container-fluid">
             <hr class="mx-auto" style="width: 95%; opacity: 1;">

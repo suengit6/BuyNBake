@@ -20,59 +20,64 @@
     <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
         <!--modular-->
     </nav> 
-    <main class="container pt-5">
-        <div class="profile row">
-            <div class="col-lg-6 col-12 d-flex align-items-center">
-                <input type="file" id="profilePicInput" style="display: none;">
-                <label for="profilePicInput">
-                    <img id="profilePic" src="" alt="Click to edit" style="cursor: pointer; object-fit: fill;">
-                </label>
-                <h3 style="width: fit-content;" id="fullName">Full Name</h3>
+
+    <div class="container my-3">
+        <div class="card p-3 shadow-sm">
+            <main class="pt-3">
+                <div class="profile row mb-3">
+                    <div class="px-lg-5 col-lg-6 d-flex justify-content-center align-items-center">
+                        <input type="file" id="profilePicInput" style="display: none;">
+                        <label for="profilePicInput">
+                            <img id="profilePic" src="https://github.com/suengit6/activity-images/blob/main/united-states-computer-icons-desktop-wallpaper-clip-art-free-high-quality-person-icon-d2fb644233d4892063b208313e9cec51.png?raw=true" alt="Click to edit" style="cursor: pointer; object-fit: fill;">
+                        </label>
+                        <div class="edit justify-content-center align-items-center" style="position: absolute; width: 150px; height: 150px; border-radius: 100%;background-color: rgba(0, 0, 0, 0.75); color: white;">
+                            <span for="profilePicInput">Edit</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3 d-flex flex-column align-items-center m-auto">
+                        <h3 class="text-center" style="width: fit-content; text-decoration: underline;" id="fullName">Full Name</h3>
+                        <small>Baker:</small>
+                    </div>
+                </div>
+            </main>
+        <hr>
+        <br>
+            <section class="d-flex justify-content-evenly">
+                <a class="btn btn-primary" href="./account.html">My Account</a>
+                <a class="btn btn-primary" href="./shop.html">View Cart</a>
+            </section>
+
+            <br>
+            <hr>
+        
+            <div class="container py-3">
+                <form class="row">
+                    <section class="col-lg-6">
+                        <h6>My Account</h6>
+                        <small><p>View and edit your personal info.</p></small>
+                        <div>
+                            <button>Discard</button>
+                            <button id="updateInfoBtn">Update Info</button>
+                            <button id="logoutBtn">Log-out</button>     
+                        </div>
+                    </section>
+        
+                    <section class="col-lg-6 mb-5">
+                        <h6>Display Info</h6>
+                        <small><p>Update your personal information.</p></small>
+                        <div class="d-flex flex-column">
+                            <label for="firstName">First Name*</label>
+                            <input type="text" name="firstName" id="firstName">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" name="lastName" id="lastName">
+                            <label for="phone">Phone</label>
+                            <input type="text" name="phone" id="phone">
+                        </div>
+                    </section>
+                </form>
             </div>
         </div>
-        <hr>    
-    </main>
-
-    
-
-    <section class="d-flex justify-content-evenly">
-        <a class="btn btn-primary" href="./account.html">My Account</a>
-        <a class="btn btn-primary" href="./shop.html">View Cart</a>
-    </section>
-    
-
-    <form class="container mb-5">
-        <hr>
-        <section>
-            <h6>My Account</h6>
-            <small><p>View and edit your personal info below.</p></small>
-            <div>
-                <button>Discard</button>
-                <button id="updateInfoBtn">Update Info</button>
-            </div>
-        </section>
-
-
-        <hr>
-
-        <section>
-            <h6>Display Info</h6>
-            <small><p>Update your personal information.</p></small>
-            <div>
-                <label for="firstName">First Name*</label>
-                <input type="text" name="firstName" id="firstName">
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone">
-            </div>
-        </section>
-
-        <hr>
-        <button id="logoutBtn">Log-out</button>
-
-
-    </form>
+    </div>
 
     <footer style="background-color: #1F1300; color: white;" id="footerContainer">
     </footer> <!--modular-->
@@ -141,29 +146,34 @@
     
             // Check if there is a saved image source in local storage
             const savedImageSrc = userAccount ? userAccount.profilePicSrc : null;
-    
+
             if (savedImageSrc) {
                 document.getElementById('profilePic').src = savedImageSrc;
             }
-    
+
             // Function to handle image click and allow the user to upload a new image
             document.getElementById('profilePicInput').addEventListener('change', function (event) {
                 const file = event.target.files[0];
-    
+
                 if (file) {
                     // Convert the image to Base64
                     const reader = new FileReader();
                     reader.onload = function (e) {
                         const newImageSrc = e.target.result;
                         document.getElementById('profilePic').src = newImageSrc;
-    
+
                         // Update the 'userAccount' in local storage with the new image source
                         userAccount.profilePicSrc = newImageSrc;
                         localStorage.setItem('userAccount', JSON.stringify(userAccount));
                     };
-    
+
                     reader.readAsDataURL(file);
                 }
+            });
+
+            // Add an event listener to the "Edit" div to trigger the file input click event
+            document.querySelector('.edit').addEventListener('click', function () {
+                document.getElementById('profilePicInput').click();
             });
     
             // Function to handle sharing profile
@@ -183,6 +193,35 @@
             document.getElementById('fullName').textContent = `${userAccount.firstName} ${userAccount.lastName}`;
         }
     </script>
+
+    <script defer>
+        // Function to handle mouseenter event
+        function handleMouseEnter() {
+            const edit = document.querySelector(".edit");
+            edit.style.display = "flex";
+        }
+
+        // Function to handle mouseleave event
+        function handleMouseLeave() {
+            const edit = document.querySelector(".edit");
+            edit.style.display = "none";
+        }
+
+        // Adding event listeners to the elements
+        const labelElement = document.querySelector('label[for="profilePicInput"]');
+        const editElement = document.querySelector(".edit");
+
+        labelElement.addEventListener("mouseenter", handleMouseEnter);
+        labelElement.addEventListener("mouseleave", handleMouseLeave);
+
+        // Adjusting event listeners for the "edit" div
+        editElement.addEventListener("mouseenter", handleMouseEnter);
+        editElement.addEventListener("mouseleave", handleMouseLeave);
+    </script>
+
+
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

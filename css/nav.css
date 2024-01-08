@@ -1,17 +1,23 @@
+.navbarNav{
+	width: 100%;
+   background-color: #1F1300;
+}
+.topNav{
+   width: 100%;
+}
 .nav-item .nav-link , .contactUsNum{	
     text-decoration: underline;
 }
 .navbar-nav{
 	font-weight: 600;
+   flex-direction: row;
 }
 .contactUsNum{
 	color: white;
 	font-family:Arial, Helvetica, sans-serif
 }
+ 
 @media (max-width: 768px) {
-#navbarNav{
-	width: 100%;
-}
  .topNav{
     display: flex;
     flex-direction: row;
@@ -26,5 +32,14 @@
  }
  hr{
     margin: 0!important;
+ }
+ .navBottom{
+   flex-direction: column;
+   text-align: center;
+   background-color: #1F1300;
+ }
+ .navBottom .nav-link{
+   color: white!important;
+   font-weight: 400;
  }
 }

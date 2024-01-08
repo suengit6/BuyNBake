@@ -1,10 +1,16 @@
 .profile img{
-    height: 80px;
-    width: 80px;
+    height: 150px;
+    width: 150px;
     border-radius: 100%;
-    margin-right: 20px;
     border: 1px solid black;
 }
+.edit{
+    display: none;
+}
+.edit:hover{
+    cursor:pointer;
+}
+
 
 @media (max-width: 768px) {
     .shareButtonCont{

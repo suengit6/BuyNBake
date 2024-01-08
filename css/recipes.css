@@ -16,7 +16,7 @@ main h5{
     width: 80%;
 }
 
-.categories{
+.categories small, .categories h3{
     text-shadow: 1px 1px black;
 }
 
@@ -33,4 +33,8 @@ main h5{
 .faq button{
     width: 80%;
     margin: auto;
+}
+
+.categories li:hover{
+    text-decoration:underline;
 }

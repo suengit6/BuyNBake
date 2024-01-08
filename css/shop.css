@@ -3,22 +3,22 @@
 }
 
 #viewCart{
-   background-color: #AF9B46;
+   background-color: #af9c46c0;
 }
 .card-title{
-    background-color: #AF9B46;
+    background-color: #AF9B46c0;
 }
 .card-body{
-    background-color: #DFD6A7;
+    background-color: #DFD6A7c0;
 }
 .card button{
-    background-color: #af9b46;
+    background-color: #af9b46c0;
 }
 button{
     transition: background-color 0.3s ease!important;
 }
 button:hover{
-    background-color: #c4ae4f!important; 
+    background-color: #c4ae4fc0!important; 
 }
 .row .col-lg-3{
     display: flex;
@@ -26,4 +26,16 @@ button:hover{
 }
 .row .col-lg-3 .card{
     width: 80%;
+    background: transparent;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .shopNav p{
+        text-align: center!important;
+    }
+    .shopNav .viewCartCont{
+        display: flex;
+        justify-content: center;
+    }
 }

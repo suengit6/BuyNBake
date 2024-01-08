@@ -1,3 +1,9 @@
+*{
+    font-family: 'Jacques Francois';
+}
 .aboutUs h4, .aboutUs p{
     color: white;
+}
+.contactForm{
+    text-shadow: -1px 1px black;
 }

@@ -23,18 +23,18 @@
     <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body position-absolute" style="width: 100%;" id="navbarContainer">
     </nav> <!--modular-->
 
-    <main class="d-flex justify-content-center flex-column pt-5">
-        <div class="top-text d-flex text-center justify-content-center flex-column" style="height: 40vh;">
+    <main class="d-flex justify-content-center flex-column">
+        <div class="top-text d-flex text-center justify-content-center flex-column" style="height: 40vh; background-image: url(https://052d1f16615cd6169700.b-cdn.net/wp-content/uploads/2020/10/pexels-ksenia-chernaya-3952054-scaled.jpg.webp); background-size: cover;">
             <h2 class="text-center mt-5">Shop</h2>
             <h5 class="text-center mx-auto">"Shop premium baking essentials at BuyNbakeRecipes. Explore quality ingredients and kits, carefully curated for your baking success. <br> Secure and elevate your culinary experience with us!"</h5>
         </div>
 
-        <div class="mt-5 row align-items-center mx-auto">
-            <div class="col-6">
-                <label for="viewCart">Ingredients</label>
+        <div class="shopNav mt-5 row align-items-center mx-auto" style="width: 100%;">
+            <div class="col-lg-6">
+                <p class="text-end">Ingredients</p>
             </div>
-            <div class="col-6 p-0">
-                <button class="px-5 btn" id="viewCart" style="width: auto;">View Cart</button>
+            <div class="col-lg-6 p-0 viewCartCont">
+                <button class="px-5 btn text-center" id="viewCart">View Cart</button>
             </div>
         </div>
 
@@ -62,7 +62,7 @@
 
         <div class="row p-5 m-0">
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="eggs">
+                <div class="card mb-3 shadow-sm" data-product-id="eggs">
                     <div class="card-title text-center py-2 m-0">Eggs</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 10.00</h5>
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="flour">
+                <div class="card mb-3 shadow-sm" data-product-id="flour">
                     <div class="card-title text-center py-2 m-0">Flour 0.5kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 30.00</h5>
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="yeast">
+                <div class="card mb-3 shadow-sm" data-product-id="yeast">
                     <div class="card-title text-center py-2 m-0">Yeast 0.5kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 30.00</h5>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="parchmentPaper">
+                <div class="card mb-3 shadow-sm" data-product-id="parchmentPaper">
                     <div class="card-title text-center py-2 m-0">Parchment Paper</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 40.00</h5>
@@ -104,7 +104,7 @@
         </div>
         <div class="row p-5 m-0">
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="sugar">
+                <div class="card mb-3 shadow-sm" data-product-id="sugar">
                     <div class="card-title text-center py-2 m-0">Sugar 1kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 65.00</h5>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="bakingPowder">
+                <div class="card mb-3 shadow-sm" data-product-id="bakingPowder">
                     <div class="card-title text-center py-2 m-0">Baking Powder 0.5kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 35.00</h5>
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="bakingSoda">
+                <div class="card mb-3 shadow-sm" data-product-id="bakingSoda">
                     <div class="card-title text-center py-2 m-0">Baking Soda 0.5kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 30.00</h5>
@@ -134,7 +134,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="granulatedSugar">
+                <div class="card mb-3 shadow-sm" data-product-id="granulatedSugar">
                     <div class="card-title text-center py-2 m-0">Granulated Sugar 1kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 75.00</h5>
@@ -146,7 +146,7 @@
         </div>
         <div class="row p-5 m-0">
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="oats">
+                <div class="card mb-3 shadow-sm" data-product-id="oats">
                     <div class="card-title text-center py-2 m-0">Oats 1kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 100.00</h5>
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="butter">
+                <div class="card mb-3 shadow-sm" data-product-id="butter">
                     <div class="card-title text-center py-2 m-0">Butter</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 40.00</h5>
@@ -166,7 +166,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="milk">
+                <div class="card mb-3 shadow-sm" data-product-id="milk">
                     <div class="card-title text-center py-2 m-0">Milk 1L</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 120.00</h5>
@@ -176,7 +176,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="vanillaExtract">
+                <div class="card mb-3 shadow-sm" data-product-id="vanillaExtract">
                     <div class="card-title text-center py-2 m-0">Vanilla Extract</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 20.00</h5>
@@ -188,7 +188,7 @@
         </div>
         <div class="row p-5 m-0">
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="chocolateChips">
+                <div class="card mb-3 shadow-sm" data-product-id="chocolateChips">
                     <div class="card-title text-center py-2 m-0">Chocolate chips</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 20.00</h5>
@@ -198,7 +198,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="honey">
+                <div class="card mb-3 shadow-sm" data-product-id="honey">
                     <div class="card-title text-center py-2 m-0">Honey 0.75L</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 80.00</h5>
@@ -208,7 +208,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="cream">
+                <div class="card mb-3 shadow-sm" data-product-id="cream">
                     <div class="card-title text-center py-2 m-0">Cream 0.5L</div>
                     <div class="card-body d-flex flex-column pt-0">
                        <h5 class="card-header mb-3">Php 20.00</h5>
@@ -218,7 +218,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mb-3" data-product-id="salt">
+                <div class="card mb-3 shadow-sm" data-product-id="salt">
                     <div class="card-title text-center py-2 m-0">Salt 1Kg</div>
                     <div class="card-body d-flex flex-column pt-0">
                         <h5 class="card-header mb-3">Php 30.00</h5>

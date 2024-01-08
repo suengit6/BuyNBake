@@ -2,5 +2,8 @@ input{
     padding: .5rem;
 }
 .card{
-    background-color: #DFD6A7!important;
+    background-color: #dfd6a7c4!important;
+}
+.navbar-nav .nav-link{
+    color: white;
 }

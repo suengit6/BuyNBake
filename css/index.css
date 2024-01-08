@@ -3,6 +3,7 @@
 }
 main{
     background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/026/984/original/overhead-view-of-baking-ingredients-and-a-notepad-royalty-free-image-930086476-1546440806.jpg?1644536911");   
+    background-size: cover;
 }
 main, section{
     line-height: 1.75;

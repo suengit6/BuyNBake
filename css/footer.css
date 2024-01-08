@@ -2,6 +2,7 @@ footer .photoGallery img{
     height: 80px;
     width: 150px;
     padding: 5px 0;
+    border-radius: 8px;
 }
 footer a, .links h3 , .links li{
     text-decoration: none;
@@ -9,8 +10,13 @@ footer a, .links h3 , .links li{
     text-align: center;
 }
 .photoGallery .col-lg-4{
-    display: flex;
+    display: flex;  
     justify-content: center;
+}
+.modal-body img{
+    height: 80vh!important;
+    width: 100%!important;
+    border-radius: 0!important;
 }
 @media (max-width: 768px) {
     .footerBottom h6, .footerBottom a{
