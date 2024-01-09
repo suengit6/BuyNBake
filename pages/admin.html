@@ -47,6 +47,7 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Delivery Address</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -56,92 +57,103 @@
     <button onclick="logout()">Logout</button>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function completeOrder(userId, productName) {
-                const orderKey = `cart_${userId}`;
-                const orderData = JSON.parse(localStorage.getItem(orderKey)) || {};
+        function completeOrder(userId, orderInstance, productName) {
+            const orderKey = `order_${userId}_${orderInstance}`;
+            const orderData = JSON.parse(localStorage.getItem(orderKey)) || {};
 
-                // Update the status to 'Complete'
-                orderData[productName].status = 'Complete';
+            // Update the status to 'Complete'
+            orderData.cartData[productName].status = 'Complete';
 
-                // Save the updated order data back to localStorage
-                localStorage.setItem(orderKey, JSON.stringify(orderData));
+            // Save the updated order data back to localStorage
+            localStorage.setItem(orderKey, JSON.stringify(orderData));
 
-                // Re-render the orders table
-                renderOrdersTable();
+            // Re-render the orders table
+            renderOrdersTable();
 
-                alert(`Order completed for User ID: ${userId}, Product: ${productName}`);
-            }
+            alert(`Order completed for User ID: ${userId}, Order Instance: ${orderInstance}, Product: ${productName}`);
+        }
 
-            function renderUsersTable() {
-                const usersTableBody = document.getElementById('usersTableBody');
-                usersTableBody.innerHTML = '';
+        function renderUsersTable() {
+            const usersTableBody = document.getElementById('usersTableBody');
+            usersTableBody.innerHTML = '';
 
-                // Retrieve user accounts from localStorage
-                const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
-                const loggedOutAccounts = JSON.parse(localStorage.getItem('loggedOutAccounts')) || {};
+            // Retrieve user accounts from localStorage
+            const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+            const loggedOutAccounts = JSON.parse(localStorage.getItem('loggedOutAccounts')) || {};
 
-                const allUsers = [userAccount, ...Object.values(loggedOutAccounts)];
+            const allUsers = [userAccount, ...Object.values(loggedOutAccounts)];
 
-                // Display user accounts in the table
-                allUsers.forEach(user => {
+            // Display user accounts in the table
+            allUsers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.userId}</td>
+                    <td>${user.firstName || 'N/A'}</td>
+                    <td>${user.lastName || 'N/A'}</td>
+                    <td>${user.email || 'N/A'}</td>
+                    <td>${user.phone || 'N/A'}</td>
+                    <td>${user.address || 'N/A'}</td>
+                    <td><button onclick="deleteUser('${user.userId}')">Delete</button></td>
+                `;
+                usersTableBody.appendChild(row);
+            });
+        }
+
+        function renderOrdersTable() {
+            const ordersTableBody = document.getElementById('ordersTableBody');
+            ordersTableBody.innerHTML = '';
+
+            // Retrieve user accounts from localStorage
+            const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
+
+            // Retrieve order data from localStorage
+            const orderData = Object.keys(localStorage)
+                .filter(key => key.startsWith('order_'))
+                .map(key => {
+                    const userId = key.split('_')[1];
+                    const orderInstance = key.split('_')[2];
+                    const order = JSON.parse(localStorage.getItem(key));
+                    return { userId, orderInstance, order };
+                });
+
+            // Display order data in the table
+            orderData.forEach(order => {
+                const { cartData } = order.order;
+
+                for (const productName in cartData) {
+                    const { quantity, price, status = 'Pending' } = cartData[productName];
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${user.userId}</td>
-                        <td>${user.firstName || 'N/A'}</td>
-                        <td>${user.lastName || 'N/A'}</td>
-                        <td>${user.email || 'N/A'}</td>
-                        <td>${user.phone || 'N/A'}</td>
-                        <td>${user.address || 'N/A'}</td>
-                        <td><button onclick="deleteUser('${user.userId}')">Delete</button></td>
+                        <td>${order.userId}</td>
+                        <td>${productName}</td>
+                        <td>${quantity}</td>
+                        <td>${price !== undefined ? price.toFixed(2) : 'N/A'}</td>
+                        <td>${userAccount.address || 'N/A'}</td>
+                        <td>${status}</td>
+                        <td><button onclick="completeOrder('${order.userId}', '${order.orderInstance}', '${productName}')">Complete</button></td>
                     `;
-                    usersTableBody.appendChild(row);
-                });
-            }
+                    ordersTableBody.appendChild(row);
+                }
+            });
+        }
 
-            function renderOrdersTable() {
-                const ordersTableBody = document.getElementById('ordersTableBody');
-                ordersTableBody.innerHTML = '';
+        window.deleteUser = function (userId) {
+            // Implement the logic to delete user
+            // You may want to ask for confirmation before deletion
+            alert(`User with ID ${userId} deleted.`);
+            renderUsersTable(); // Update the table after deletion
+        };
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Your existing code inside the DOMContentLoaded event listener
+            // ...
 
-                // Retrieve user accounts from localStorage
-                const userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
-
-                // Retrieve order data from localStorage
-                const orderData = Object.keys(localStorage)
-                    .filter(key => key.startsWith('cart_'))
-                    .map(key => ({ userId: key.replace('cart_', ''), order: JSON.parse(localStorage.getItem(key)) }));
-
-                // Display order data in the table
-                orderData.forEach(order => {
-                    for (const productName in order.order) {
-                        const { quantity, price, status = 'Pending' } = order.order[productName];
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${order.userId}</td>
-                            <td>${productName}</td>
-                            <td>${quantity}</td>
-                            <td>${price.toFixed(2)}</td>
-                            <td>${userAccount.address || 'N/A'}</td>
-                            <td>${status}</td>
-                            <td><button onclick="completeOrder('${order.userId}', '${productName}')">Complete</button></td>
-                        `;
-                        ordersTableBody.appendChild(row);
-                    }
-                });
-            }
-
-            window.deleteUser = function (userId) {
-                // Implement the logic to delete user
-                // You may want to ask for confirmation before deletion
-                alert(`User with ID ${userId} deleted.`);
-                renderUsersTable(); // Update the table after deletion
-            };
-
-            // Initial rendering of the users and orders tables
+            // Call the initial rendering of the users and orders tables
             renderUsersTable();
             renderOrdersTable();
         });
-
     </script>
     
     <script>
@@ -177,9 +189,7 @@
             alert('Admin logged out.');
             window.location.href = 'adminLogin.html';
         }
-
     </script>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -193,7 +203,5 @@
             }
         });
     </script>
-
-
 </body>
 </html>

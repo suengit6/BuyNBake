@@ -14,7 +14,7 @@ app.post('/create-checkout-session', async (req, res) => {
       line_items: req.body.items,
       mode: 'payment',
       success_url: 'http://localhost:3000/pages/success.html',
-      cancel_url: 'http://localhost:3000/pages/account.html',
+      cancel_url: 'http://localhost:3000/pages/shop.html',
     });
 
     // Get the user ID from the items (assuming it's passed in the request)

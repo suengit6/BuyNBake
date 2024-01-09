@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred during checkout. Please try again.');
+      window.location.href = "../pages/offlinePayment.html"
     }
   });
 });

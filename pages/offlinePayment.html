@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNBakeRecipes</title>
+
+    <!-- links -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/4241/4241664.png">
+
+    <link rel="stylesheet" href="../css/offlinePayment.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body position-absolute" style="width: 100%;" id="navbarContainer">
+    </nav> <!--modular-->
+
+    <main class="d-flex justify-content-center flex-column"
+        style="background-image: url(https://052d1f16615cd6169700.b-cdn.net/wp-content/uploads/2020/10/pexels-ksenia-chernaya-3952054-scaled.jpg.webp); height: 80vh;">
+        <!-- Your Offline Payment Content Goes Here -->
+    
+        <div class=" d-flex justify-content-evenly px-5">
+            <div class="card p-5">
+    
+                <h2 class="text-center mb-4">Order Summary</h2>
+    
+                <div id="cartContents" class="mb-4">
+                    <!-- Cart items will be displayed here dynamically -->
+                </div>
+    
+                <p id="totalProductPrice" class="mb-3">Total Product Price: Php 0.00</p>
+                <p id="shippingFee" class="mb-3">Shipping Fee: Php 100.00</p>
+                <p id="totalPrice" class="mb-3">Total Price: Php 100.00</p>
+    
+            </div>
+    
+            <form class="card p-5"">
+    
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" required>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="inputCardNumber" class="form-label">Card Number:</label>
+                    <input type="text" class="form-control" id="inputCardNumber" placeholder="Enter card number" required>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="inputExpiry" class="form-label">Expiry Date:</label>
+                        <input type="text" class="form-control" id="inputExpiry" placeholder="MM/YYYY" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="inputCVC" class="form-label">CVC:</label>
+                        <input type="text" class="form-control" id="inputCVC" placeholder="Enter CVC" required>
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="inputFullName" class="form-label">Full Name on Card:</label>
+                    <input type="text" class="form-control" id="inputFullName" placeholder="Enter full name" required>
+                </div>
+    
+                <button type="button" onclick="submitForm()" class="btn btn-primary">Submit</button>
+    
+            </form>
+    
+        </div>
+    
+    
+    </main>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="../templating/navpages.js" defer></script>
+    <script src="../templating/footerpages.js"></script>    
+
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+
+    <script defer>
+        function submitForm() {
+            // Retrieve input values
+            const email = document.getElementById('inputEmail').value;
+            const cardNumber = document.getElementById('inputCardNumber').value;
+            const expiry = document.getElementById('inputExpiry').value;
+            const cvc = document.getElementById('inputCVC').value;
+            const fullName = document.getElementById('inputFullName').value;
+    
+            // Check if fields are filled
+            if (email && cardNumber && expiry && cvc && fullName) {
+                // Your existing logic for form submission
+                // For example, you can perform any additional validation or data processing here
+    
+                // Redirect to the desired page
+                window.location.href = '../pages/success.html';
+            } else {
+                alert('Please fill in all the required fields.');
+            }
+        }
+    
+    </script>
+
+
+    <script defer>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to display cart items, calculate total price, and handle payment method
+            function displayOrderSummary() {
+                const cartContentsElement = document.getElementById('cartContents');
+                const totalProductPriceElement = document.getElementById('totalProductPrice');
+                const shippingFeeElement = document.getElementById('shippingFee');
+                const totalPriceElement = document.getElementById('totalPrice');
+
+                let totalProductPrice = 0;
+
+                // Retrieve cart items from localStorage
+                const userAccount = JSON.parse(localStorage.getItem('userAccount')) || { userId: '' };
+                const cart = JSON.parse(localStorage.getItem(`cart_${userAccount.userId}`)) || {};
+
+                // Display cart items dynamically
+                for (const productId in cart) {
+                    const { quantity, price } = cart[productId];
+                    totalProductPrice += quantity * price;
+
+                    const productParagraph = document.createElement('p');
+                    productParagraph.innerText = `Product Name: ${productId}, Quantity: ${quantity}, Price: Php ${price.toFixed(2)}`;
+                    cartContentsElement.appendChild(productParagraph);
+                }
+
+                // Calculate and display total product price, shipping fee, and total price
+                const shippingFee = 100;
+                const totalPrice = totalProductPrice + shippingFee;
+
+                totalProductPriceElement.innerText = `Total Product Price: Php ${totalProductPrice.toFixed(2)}`;
+                shippingFeeElement.innerText = `Shipping Fee: Php ${shippingFee.toFixed(2)}`;
+                totalPriceElement.innerText = `Total Price: Php ${totalPrice.toFixed(2)}`;
+            }
+            // Call the displayOrderSummary function when the page is loaded
+            displayOrderSummary();
+        });
+    </script>
+
+</body>
+</html>

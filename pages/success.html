@@ -6,16 +6,91 @@
     <title>Document</title>
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/4241/4241664.png">
 
-</head>
-<body>
-    <h1>Success!</h1>
-    <h2>redirecting you back to homepage...</h2>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    <style>
+        *{
+            font-family: 'Jacques Francois';
+        }
+    </style>
+
+</head>
+<body style="background-image: url(https://github.com/suengit6/activity-images/blob/main/download.jpg?raw=true); background-size: cover;">
+    <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 100vh; color: white;">
+        <h1>Thank you for purchasing!</h1>
+        <h2>redirecting you back to homepage...</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
     <script>
         setTimeout(function() {
             window.location.href = "../index.html";
-        }, 1000);
+        }, 4500);
     </script>
+
+
+    <script>
+        // Function to retrieve user ID from userAccount key in local storage
+        function getUserIdFromUserAccount() {
+            const userAccountData = JSON.parse(localStorage.getItem("userAccount")) || {};
+            return userAccountData.userId || null;
+        }
+
+        // Function to retrieve user ID from userAccount key in local storage
+        function getUserAccountData() {
+            return JSON.parse(localStorage.getItem("userAccount")) || {};
+        }
+
+        // Assuming you have a function to get the user ID and cart data
+        function getUserId() {
+            // Replace this with your actual logic to get the user ID
+            return getUserIdFromUserAccount() || "defaultUserId"; // Example default user ID
+        }
+
+        function getCartData() {
+            // Replace this with your actual logic to get the cart data
+            return JSON.parse(localStorage.getItem(`cart_${getUserId()}`)) || [];
+        }
+
+        // Generate order instance starting from 1
+        function generateOrderInstance() {
+            // Replace this with your actual logic to get the latest order instance
+            // For simplicity, we'll increment by 1 each time
+            const latestOrderInstance = parseInt(localStorage.getItem("latestOrderInstance") || 0);
+            const newOrderInstance = latestOrderInstance + 1;
+            localStorage.setItem("latestOrderInstance", newOrderInstance);
+            return newOrderInstance;
+        }
+
+        // Main function to process and save order data
+        function processOrder() {
+            const userId = getUserId();
+            const userAccountData = getUserAccountData();
+            const cartData = getCartData();
+            const orderInstance = generateOrderInstance();
+
+            // Create a new key in local storage for the order
+            const orderKey = `order_${userId}_${orderInstance}`;
+            
+            // Save order data in local storage
+            localStorage.setItem(orderKey, JSON.stringify({
+                userAccount: userAccountData,
+                cartData,
+                // Add any other relevant order information
+            }));
+
+            // Optionally, you can clear the cart data after the order is processed
+            localStorage.removeItem(`cart_${userId}`);
+
+            // Display a success message or redirect to another page
+            console.log("Order processed successfully!");
+        }
+
+        // Call the main function when the page loads
+        processOrder();
+    </script>
+
     
 </body>
 </html>

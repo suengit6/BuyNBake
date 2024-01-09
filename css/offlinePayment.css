@@ -1,0 +1,13 @@
+*{
+    font-family: 'Jacques Francois';
+}
+.nav-item{
+    text-shadow: -1px 1px black;
+}
+.nav-item .nav-link{
+    color: white!important;
+    font-weight: 400;
+}
+.contactUsNum{
+    text-shadow: -1px 1px black;
+}
