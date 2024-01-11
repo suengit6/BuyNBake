@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNBake</title>
+
+    <!-- links -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/bookmarks.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/4241/4241664.png">
+</head>
+<body style="background-image: url(https://github.com/suengit6/activity-images/blob/main/qwerqwerqwer%20qfeg%20errhdfv%20w%20rg.jfif?raw=true);">
+
+    <nav class="navbar navbar-expand-lg d-flex flex-column p-0 border-body" style="width: 100%;" id="navbarContainer">
+        <!--modular-->
+    </nav> 
+
+    <div class="container my-5">
+        <div class="card shadow-sm">
+            <div id="bookmarks-list">
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #1F1300; color: white;" id="footerContainer">
+    </footer> <!--modular-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the user is logged in
+            var loggedIn = localStorage.getItem('loggedIn');
+    
+            // If not logged in, redirect to the login page
+            if (loggedIn !== 'true') {
+                alert("Please login first.");
+                window.location.href = './login.html';
+            }
+    
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve user information from local storage
+            const storedUserAccount = JSON.parse(localStorage.getItem('userAccount'));
+
+            // Check if userAccount exists and has a user ID
+            if (storedUserAccount && storedUserAccount.userId) {
+                // Assuming userAccount is available in the global scope
+                const userAccount = [storedUserAccount];
+                const userId = userAccount[0].userId;
+                const bookmarkKey = `bookmark_${userId}`;
+
+                // Get bookmarked recipes from local storage
+                const bookmarkedRecipes = JSON.parse(localStorage.getItem(bookmarkKey)) || [];
+
+                // Display bookmarked recipes
+                const bookmarksList = document.getElementById('bookmarks-list');
+
+                if (bookmarkedRecipes.length > 0) {
+                    bookmarksList.innerHTML = `
+                        <div class="topCard pt-3 pb-1 px-4 d-flex justify-content-between">
+                        <button class="btn btn-primary" onclick="history.back();">< Back</button>
+                        <h3 class="text-center px-3">Your Bookmarks:</h3><hr>
+                        </div>
+                        `;
+
+                    // Iterate through each bookmarked recipe
+                    bookmarkedRecipes.forEach(recipeId => {
+                        const recipeCard = document.createElement('div');
+                        recipeCard.classList.add('px-5');
+                        recipeCard.innerHTML = `
+                            <p>${recipeId}</p>
+                            <button class="btn btn-primary" onclick="visitRecipe('${recipeId}')">Visit</button>
+                            <button class="btn btn-danger" onclick="unbookmarkRecipe('${recipeId}')">Unbookmark</button>
+                            <hr>
+                            <br>
+                        `;
+                        bookmarksList.appendChild(recipeCard);
+                    });
+                } else {
+                    bookmarksList.innerHTML = '<p>No bookmarks available.</p>';
+                }
+            } else {
+                alert('User information not found or incomplete. Please log in.');
+            }
+        });
+
+        function visitRecipe(recipeId) {
+            // Redirect to the correct categorized page based on the recipe ID
+            switch (recipeId) {
+                case 'classicFrenchBaguette':
+                    window.location.href = '../recipeCategories/breadAndPastry.html#' + recipeId;
+                    break;
+                case 'blueberryMuffins':
+                    window.location.href = '../recipeCategories/breadAndPastry.html#' + recipeId;
+                    break;
+                case 'cinnamonRolls':
+                    window.location.href = '../recipeCategories/breadAndPastry.html#' + recipeId;
+                    break;
+                case 'classicChocolateCake':
+                    window.location.href = '../recipeCategories/cakeClassics.html#' + recipeId;
+                    break;
+                case 'classicVanillaSpongeCake':
+                    window.location.href = '../recipeCategories/cakeClassics.html#' + recipeId;
+                    break;
+                case 'classicCarrotCake':
+                    window.location.href = '../recipeCategories/cakeClassics.html#' + recipeId;
+                    break;
+                case 'glutenFreeBananaMuffins':
+                    window.location.href = '../recipeCategories/healthyBakes.html#' + recipeId;
+                    break;
+                case 'veganQuinoaChocolateCookies':
+                    window.location.href = '../recipeCategories/healthyBakes.html#' + recipeId;
+                    break;
+                case 'lowSugarAppleSauceCake':
+                    window.location.href = '../recipeCategories/healthyBakes.html#' + recipeId;
+                    break;
+                case 'colorfulFruitKebabs':
+                    window.location.href = '../recipeCategories/kidFriendly.html#' + recipeId;
+                    break;
+                case 'funfettiCupcakes':
+                    window.location.href = '../recipeCategories/kidFriendly.html#' + recipeId;
+                    break;
+                case 'teddyBearToasts':
+                    window.location.href = '../recipeCategories/kidFriendly.html#' + recipeId;
+                    break;
+                case 'elegantRedVelvetCake':
+                    window.location.href = '../recipeCategories/specialOccasion.html#' + recipeId;
+                    break;
+                case 'elegantRedVelvetCake':
+                    window.location.href = '../recipeCategories/specialOccasion.html#' + recipeId;
+                    break;
+                case 'decadentBlackForestCake':
+                    window.location.href = '../recipeCategories/specialOccasion.html#' + recipeId;
+                    break;
+                case 'celebrationRainbowCake':
+                    window.location.href = '../recipeCategories/specialOccasion.html#' + recipeId;
+                    break;
+                
+                
+                // Add cases for other recipe IDs and their corresponding pages
+                default:
+                    break;
+            }
+        }
+
+        function unbookmarkRecipe(recipeId) {
+            // Retrieve user information from local storage
+            const storedUserAccount = JSON.parse(localStorage.getItem('userAccount'));
+
+            // Check if userAccount exists and has a user ID
+            if (storedUserAccount && storedUserAccount.userId) {
+                // Assuming userAccount is available in the global scope
+                const userAccount = [storedUserAccount];
+                const userId = userAccount[0].userId;
+                const bookmarkKey = `bookmark_${userId}`;
+
+                // Get existing bookmarks from local storage
+                const existingBookmarks = JSON.parse(localStorage.getItem(bookmarkKey)) || [];
+
+                // Remove the recipe ID from bookmarks
+                const updatedBookmarks = existingBookmarks.filter(id => id !== recipeId);
+
+                // Update local storage with the new bookmarks
+                localStorage.setItem(bookmarkKey, JSON.stringify(updatedBookmarks));
+
+                // Refresh the page to reflect the changes
+                location.reload();
+            } else {
+                alert('User information not found or incomplete. Please log in.');
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="../templating/navpages.js"></script>
+    <script src="../templating/footerpages.js"></script>    
+
+</body>
+</html>

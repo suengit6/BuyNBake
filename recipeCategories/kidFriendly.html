@@ -36,7 +36,7 @@
         <h2 class="text-center">Kid-Friendly Treats</h2>
 
         <!-- Recipe 1: Colorful Fruit Kabobs -->
-        <div class="card my-4 p-lg-5" style="background-image: url('https://www.eatingwell.com/thmb/HkRKIainb5ynPXy30VxmBzNydw8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/rainbow-fruit-kebabs-5-247ca5e41f5e438185ae735c05eed0fa.jpg');">
+        <div class="card my-4 p-lg-5" id="colorfulFruitKebabs" style="background-image: url('https://www.eatingwell.com/thmb/HkRKIainb5ynPXy30VxmBzNydw8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/rainbow-fruit-kebabs-5-247ca5e41f5e438185ae735c05eed0fa.jpg');">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Colorful Fruit Kabobs</h2>
                 <br>
@@ -54,11 +54,13 @@
                     <li>Thread the fruit pieces onto the wooden skewers in a colorful pattern.</li>
                     <li>Arrange the fruit kabobs on a serving platter and enjoy a healthy and delicious treat!</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('colorfulFruitKebabs')">Bookmark</button>
+
             </div>
         </div>
 
         <!-- Recipe 2: Funfetti Cupcakes -->
-        <div class="card my-4 p-lg-5" style="background-image: url(https://inbloombakery.com/wp-content/uploads/2021/01/funfetti-cupcakes-FI.jpg);">
+        <div class="card my-4 p-lg-5" id="funfettiCupcakes" style="background-image: url(https://inbloombakery.com/wp-content/uploads/2021/01/funfetti-cupcakes-FI.jpg);">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Funfetti Cupcakes</h2>
                 <br>
@@ -85,11 +87,13 @@
                     <li>Spoon the batter into the cupcake liners and bake for 18-20 minutes or until a toothpick inserted comes out clean.</li>
                     <li>Cool the cupcakes completely before frosting with vanilla frosting and decorating with additional sprinkles.</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('funfettiCupcakes')">Bookmark</button>
+
             </div>
         </div>
 
         <!-- Recipe 3: Teddy Bear Toasts -->
-        <div class="card my-4 p-lg-5" style="background-image: url(https://bellamysorganic.com.au/cdn/shop/articles/bellamysorganic-teddy-bear.jpg?v=1692426539);">
+        <div class="card my-4 p-lg-5" id="teddyBearToasts" style="background-image: url(https://bellamysorganic.com.au/cdn/shop/articles/bellamysorganic-teddy-bear.jpg?v=1692426539);">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Teddy Bear Toasts</h2>
                 <br>
@@ -110,6 +114,7 @@
                     <li>Place banana slices on top as ears and use raisins to create eyes and a nose.</li>
                     <li>Create a cute teddy bear face on each toast and serve for a delightful and nutritious snack.</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('teddyBearToasts')">Bookmark</button>
             </div>
         </div>
     </main>
@@ -125,6 +130,8 @@
     <script src="../templating/footerpages.js" defer></script>
 
     <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/bookmark.js"></script>
 
 
 

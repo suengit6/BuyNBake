@@ -36,7 +36,7 @@
         <h2 class="text-center">Special Occasions</h2>
 
         <!-- Recipe 1: Elegant Red Velvet Cake -->
-        <div class="card my-4 p-lg-5" style="background-image: url(https://theseasidebaker.com/wp-content/uploads/2022/11/red-velvet-Christmas-cake-square-copy.jpg);">
+        <div class="card my-4 p-lg-5" id="elegantRedVelvetCake" style="background-image: url(https://theseasidebaker.com/wp-content/uploads/2022/11/red-velvet-Christmas-cake-square-copy.jpg);">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Elegant Red Velvet Cake</h2>
                 <br>
@@ -69,11 +69,13 @@
                     <li>Bake for 25-30 minutes or until a toothpick inserted into the center comes out clean.</li>
                     <li>Cool the cakes in the pans for 10 minutes, then transfer to a wire rack to cool completely before frosting.</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('elegantRedVelvetCake')">Bookmark</button>
+
             </div>
         </div>
 
         <!-- Recipe 2: Decadent Black Forest Cake -->
-        <div class="card my-4 p-lg-5" style="background-image: url(https://d3s8tbcesxr4jm.cloudfront.net/ai-generated-images/mjv1/decadent-and-rich-black-forest-cake-recipe.jpg);">
+        <div class="card my-4 p-lg-5" id="decadentBlackForestCake" style="background-image: url(https://d3s8tbcesxr4jm.cloudfront.net/ai-generated-images/mjv1/decadent-and-rich-black-forest-cake-recipe.jpg);">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Decadent Black Forest Cake</h2>
                 <br>
@@ -105,11 +107,13 @@
                     <li>Pour the batter evenly into the prepared pans and bake for 30 to 35 minutes, or until a toothpick inserted into the center comes out clean.</li>
                     <li>Cool the cakes in the pans for 10 minutes, then transfer to a wire rack to cool completely before frosting.</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('decadentBlackForestCake')">Bookmark</button>
+
             </div>
         </div>
 
         <!-- Recipe 3: Celebration Rainbow Cake -->
-        <div class="card my-4 p-lg-5" style="background-image: url(https://cdn.mos.cms.futurecdn.net/FxbABLKToMJ5oxuxfjrjtn.jpg);">
+        <div class="card my-4 p-lg-5" id="celebrationRainbowCake" style="background-image: url(https://cdn.mos.cms.futurecdn.net/FxbABLKToMJ5oxuxfjrjtn.jpg);">
             <div style="background-color: rgba(255, 255, 255, 0.5);">
                 <h2>Celebration Rainbow Cake</h2>
                 <br>
@@ -143,6 +147,8 @@
                     <li>Bake for 25 to 30 minutes, or until a toothpick inserted into the center comes out clean.</li>
                     <li>Cool the cakes in the pans for 10 minutes, then transfer to a wire rack to cool completely before frosting.</li>
                 </ol>
+                <button class="bookmark-btn" onclick="bookmarkRecipe('celebrationRainbowCake')">Bookmark</button>
+
             </div>
         </div> 
     </main>
@@ -158,6 +164,8 @@
     <script src="../templating/footerpages.js" defer></script>
 
     <script src="https://kit.fontawesome.com/8d8079de50.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/bookmark.js"></script>
 
 
 
