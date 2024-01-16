@@ -38,3 +38,9 @@ main h5{
 .categories li:hover{
     text-decoration:underline;
 }
+
+@media (max-width: 768px) {
+    button.bookmark-btn{
+        width: -webkit-fill-available;
+    }
+}
