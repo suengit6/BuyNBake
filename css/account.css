@@ -17,4 +17,13 @@
         padding-top: 20px;
         justify-content: center!important;
     }
-   }
+    a.btn.btn-primary {
+        font-size: x-small;
+    }
+    .infoButtons {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: x-small;
+        margin-bottom: 20px;
+    }
+}

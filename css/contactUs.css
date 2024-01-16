@@ -7,3 +7,19 @@
 .contactForm{
     text-shadow: -1px 1px black;
 }
+.mobileContacts{
+    background-color: antiquewhite;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .aboutUs{
+        display: none!important;
+    }
+    .contactForm{
+        display: none;
+    }
+.mobileContacts{
+    display: block;
+}
+}

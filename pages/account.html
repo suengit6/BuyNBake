@@ -56,7 +56,7 @@
                     <section class="col-lg-6">
                         <h6>My Account</h6>
                         <small><p>View and edit your personal info.</p></small>
-                        <div>
+                        <div class="infoButtons">
                             <button>Discard</button>
                             <button id="updateInfoBtn">Update Info</button>
                             <button id="logoutBtn">Log-out</button>     
@@ -94,10 +94,10 @@
                 window.location.href = 'login.html';
             }
     
-            // Populate the form with user account information
+            // get login information from local storage
             var userAccount = JSON.parse(localStorage.getItem('userAccount')) || {};
             
-            // Check if the user has a userId, if not, generate one
+            // Check if the user has a userId, if not, generate one (because id is unique for every user)
             userAccount.userId = userAccount.userId || generateUserId();
     
             document.getElementById('firstName').value = userAccount.firstName || '';
@@ -109,14 +109,15 @@
                 document.getElementById('profilePic').src = userAccount.profilePicSrc;
             }
     
-            // Optionally, load the user's cart based on their userId
+            // load the user's cart based on their userId
             var userCart = JSON.parse(localStorage.getItem(`cart_${userAccount.userId}`)) || [];
     
             // Log the user's cart to the console for demonstration purposes
             console.log("User Cart:", userCart);
     
-            // Add event listener for the "Update Info" button
+            // Add event listener for the "Update Info" button (check if 'update info button' is pressed)
             document.getElementById('updateInfoBtn').addEventListener('click', function () {
+
                 // Update the user account information in local storage
                 userAccount.firstName = document.getElementById('firstName').value;
                 userAccount.lastName = document.getElementById('lastName').value;
@@ -130,7 +131,7 @@
     
             // Add event listener for the logout button
             document.getElementById('logoutBtn').addEventListener('click', function () {
-                // Clear necessary items from local storage
+                // remove loggedIn state from local storage
                 localStorage.removeItem('loggedIn');
     
                 // Save user account info to a separate key
